@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 100% of viewport height */
+  width: 100vw; /* 100% of viewport width */
+  background-color: #333; /* Dark grey background */
+  color: #fff; /* White font color */
+  text-align: center;
+}
+
+.logo-container {
+  margin-bottom: 20px; /* Add space between logo and form */
+}
+.logo-container h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+button {
+  display: block;
+  width: 350px;
+  margin: 10px 0; /* Add spacing between elements */
+  padding: 10px; /* Add padding to inputs and buttons */
+  border: 1px solid #ccc; /* Add borders for inputs and buttons */
+  border-radius: 5px; /* Add border radius */
+  background-color: #fff; /* White background */
+  color: #333; /* Dark font color */
+}
+
+button {
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+button:nth-child(3),
+button:nth-child(4) {
+  margin-top: 20px;
+}
+button:hover {
+  background-color: #292929;
+}
