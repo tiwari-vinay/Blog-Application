@@ -3,12 +3,13 @@ import User from '../model/user.js'
 
 export const signupUSer = async (req, res) => {
   try {
-    const { username, email, passowrd } = req.body;
+    const { username, email, password } = req.body;
+    console.log(username, email, password);
 
     const newUser = new User({
       username,
       email,
-      passowrd,
+      password,
     });
 
     const savedUser = await newUser.save();

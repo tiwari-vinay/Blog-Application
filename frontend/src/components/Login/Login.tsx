@@ -1,12 +1,47 @@
 import React, { useState } from "react";
 import "./login.css";
 
+import API from "../../services/api";
+
+let signupObject = {
+  username: "",
+  email: "",
+  password: "",
+};
+
+let loginObject = {
+  username: "",
+  passoword: "",
+};
+
 const Login = () => {
   const [toggle, setToggle] = useState("login");
+  const [signupObj, setChanges] = useState(signupObject);
+  const [loginObj, setLoginObj] = useState(loginObject);
 
+  function handleLoginChanges(e: any) {
+    setLoginObj({
+      ...loginObj,
+      [e.target.name]: e.target.value,
+    });
+  }
+  function handleSignupChanges(e: any) {
+    setChanges({
+      ...signupObj,
+      [e.target.name]: e.target.value,
+    });
+    console.log(e.target.value);
+  }
   function handleToggle() {
     if (toggle === "login") setToggle("signup");
     else setToggle("login");
+  }
+
+  function loginUser() {
+    // now we need to hit api endpoint for login and use store the access token refresh token in local/session storage
+  }
+  async function signupUser() {
+    API.userSignup(signupObj);
   }
 
   return (
@@ -17,20 +52,45 @@ const Login = () => {
         </div>
         {toggle === "login" ? (
           <div className="login-container">
-            <input type="text" placeholder="Enter your username" />
-            <input type="text" placeholder="Enter passowrd" />
+            <input
+              type="text"
+              placeholder="Enter Username"
+              name="username"
+              onChange={handleLoginChanges}
+            />
+            <input
+              type="text"
+              placeholder="Enter Passowrd"
+              name="password"
+              onChange={handleLoginChanges}
+            />
 
-            <button>Login</button>
+            <button onClick={loginUser}>Login</button>
             <p>OR</p>
             <button onClick={() => handleToggle()}>Signup</button>
           </div>
         ) : (
           <div className="signup-container">
-            <input type="text" placeholder="Enter your name" />
-            <input type="text" placeholder="Enter your username" />
-            <input type="text" placeholder="Enter passowrd" />
+            <input
+              type="text"
+              placeholder="Enter Email"
+              name="email"
+              onChange={handleSignupChanges}
+            />
+            <input
+              type="text"
+              placeholder="Enter Username"
+              name="username"
+              onChange={handleSignupChanges}
+            />
+            <input
+              type="text"
+              placeholder="Enter Passowrd"
+              name="password"
+              onChange={handleSignupChanges}
+            />
 
-            <button>Signup</button>
+            <button onClick={signupUser}>Signup</button>
             <p>OR</p>
             <button onClick={() => handleToggle()}>
               Already have an account
