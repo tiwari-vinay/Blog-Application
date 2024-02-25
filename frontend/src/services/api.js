@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_RESPONSE_MESSAGES, API_SERVICE_URLS } from "../contants/config.js";
 
-const URL = `http:localhost:8000`;
+const URL = `http://localhost:8000`;
 const axiosInstance = axios.create({
   baseURL: URL,
   timeout: 10000,
